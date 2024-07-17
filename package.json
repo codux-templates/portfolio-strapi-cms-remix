@@ -1,0 +1,46 @@
+{
+  "name": "portfolio-with-cms-original",
+  "type": "module",
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=18",
+    "npm": ">=8"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "prettify": "prettier . --write",
+    "verify": "yarn run lint && yarn workspaces run tsc",
+    "build": "npm run lint && yarn workspaces run build",
+    "test": "yarn workspaces run test",
+    "start:client:dev": "yarn workspace @portfolio/client run dev",
+    "start:server:dev": "yarn workspace @portfolio/strapi run develop"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
+    "@faker-js/faker": "^8.4.1",
+    "@testing-library/react": "^15.0.7",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "@wixc3/react-board": "^2.5.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-no-only-tests": "^3.1.0",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "jsdom": "^24.1.0",
+    "prettier": "^3.3.2",
+    "sass": "^1.77.7",
+    "typescript": "~5.5.3",
+    "vite": "^5.3.3",
+    "vitest": "^2.0.1"
+  }
+}

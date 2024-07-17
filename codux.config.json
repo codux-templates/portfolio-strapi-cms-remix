@@ -1,0 +1,40 @@
+{
+  "$schema": "https://wixplosives.github.io/codux-config-schema/codux.config.schema.json",
+  "boardGlobalSetup": "./packages/client/src/_codux/boards-global-setup.ts",
+  "componentsDiscovery": {
+    "include": ["packages/client/src/components/**", "packages/client/src/pages/**"],
+    "exclude": ["packages/client/src/_codux/**"]
+  },
+  "newComponent": {
+    "componentsPath": "packages/client/src/components",
+    "templatesPath": "packages/client/src/_codux/component-templates"
+  },
+  "boardsPath": "packages/client/src/_codux/boards/components",
+  "safeRender": {
+    "maxInstancesPerComponent": 1000
+  },
+  "scripts": {
+    "install": {
+      "title": "Install",
+      "description": "Run install",
+      "command": "npx -y yarn",
+      "trigger": ["checkout", "pull", "setup"]
+    }
+  },
+  "styling": {
+    "solution": "scss modules"
+  },
+  "svgLoader": "both",
+  "previewConfiguration": {
+    "environmentVariables": {
+      "VITE_API": "https://determined-vitality-9514a6552e.strapiapp.com/api/",
+      "VITE_MEDIA": "https://determined-vitality-9514a6552e.strapiapp.com"
+    }
+  },
+  "formatting": {
+    "formattingFile": {
+      "type": "editorconfig",
+      "filePath": "/.editorconfig"
+    }
+  }
+}

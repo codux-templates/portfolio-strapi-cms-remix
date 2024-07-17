@@ -1,0 +1,39 @@
+@import '@portfolio/client/src/styles/theme.module.scss';
+
+.root {
+  background-color: $inverted-background;
+  color: $inverted-text-color;
+  font: $footer-font;
+  padding: 3rem 1rem 3rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2.8rem;
+
+  @media only screen and (max-width: $mobile-width) {
+    flex-direction: column;
+    padding: 2rem 1rem 1rem 2rem;
+    font-size: 1.5rem;
+  }
+
+  row-gap: 12px;
+}
+
+.copyright {
+  font: $tiny-font;
+  flex-basis: 100%;
+  margin-top: 1rem;
+}
+
+.social {
+  display: flex;
+  column-gap: 2.8rem;
+
+  @media only screen and (max-width: $mobile-width) {
+    flex-direction: column;
+    row-gap: 5px;
+  }
+}
+
+.contact {
+  overflow: hidden;
+}

@@ -1,0 +1,39 @@
+@import '@portfolio/client/src/styles/theme.module.scss';
+
+.root {
+    height: fit-content;
+}
+
+.topMenu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.2rem;
+
+    @media only screen and (max-width: $mobile-width) {
+        gap: initial;
+        justify-content: space-between;
+    }
+}
+
+.content {
+    background-color: $background;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+}
+
+.Link {
+    display: block;
+
+    &.active,
+    &:focus,
+    &:hover {
+        font-weight: 600;
+    }
+}
+
+.sub {
+    & .Link {
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+    }
+}

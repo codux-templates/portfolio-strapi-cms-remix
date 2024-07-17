@@ -1,0 +1,28 @@
+@import './primitives.module.scss';
+
+// colors
+$background: $white;
+$inverted-background: $black;
+$text-color: $black;
+$inverted-text-color: $white;
+
+//typography
+$heading-font: 200 3.7rem/1.2 $my-prettyfont;
+$sub-heading-font: 300 1.6rem/1.45 $my-prettyfont;
+$nav-font: 400 1.2rem/1.5 $my-prettyfont;
+
+$details-title: 700 0.8rem/1 $my-prettyfont;
+$details-description: 400 0.8rem/1.5 $my-prettyfont;
+
+$gallery-item-title: 700 1rem/1.4 $my-prettyfont;
+$gallery-item-description: 300 1rem/1.4 $my-prettyfont;
+
+$footer-font: 300 2rem/1.5 $my-prettyfont;
+$tiny-font: 600 0.7rem/1.5 $my-prettyfont;
+
+$header-height: 4rem;
+$mobile-width: 600px;
+
+:export {
+  headerHeight: $header-height;
+}

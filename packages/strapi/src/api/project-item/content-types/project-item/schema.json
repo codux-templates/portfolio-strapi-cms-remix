@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_items",
+  "info": {
+    "singularName": "project-item",
+    "pluralName": "project-items",
+    "displayName": "ProjectItem",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 120,
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "project": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
+    },
+    "orderIndex": {
+      "type": "decimal",
+      "default": 0,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import '@portfolio/client/src/styles/theme.module.scss';
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.rectangle {
+  width: 50%;
+
+  & img {
+    height: 100%;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: $mobile-width) {
+    width: 100%;
+
+    & img {
+      width: 100%;
+    }
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  color: $text-color;
+  align-content: center;
+  justify-content: start;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+
+.title {
+  font: $heading-font;
+  width: 70%;
+}
+
+.description {
+  font: $sub-heading-font;
+  margin-top: 1.4rem;
+  width: 70%;
+}

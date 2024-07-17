@@ -1,0 +1,25 @@
+{
+  "name": "@portfolio/client",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "tsc": "tsc",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@floating-ui/react-dom": "^2.1.1",
+    "@radix-ui/react-navigation-menu": "^1.2.0",
+    "classnames": "^2.5.1",
+    "framer-motion": "^11.2.14",
+    "markdown-to-jsx": "^7.4.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.21.2",
+    "swr": "^2.2.5",
+    "vite-plugin-svgr": "^4.2.0"
+  }
+}

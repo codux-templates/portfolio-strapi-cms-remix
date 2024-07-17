@@ -1,0 +1,32 @@
+@import '@portfolio/client/src/styles/theme.module.scss';
+
+.root {
+  width: fit-content;
+  display: inline-block;
+}
+
+.itemTitle {
+  font: $gallery-item-title;
+  width: 0;
+  min-width: 100%;
+  text-align: start;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-left: 1px;
+  max-width: 85%;
+}
+
+.itemDesc {
+  font: $gallery-item-description;
+  width: 0;
+  text-align: start;
+  min-width: 100%;
+}
+
+.img {
+  max-width: 40vw;
+
+  @media only screen and (max-width: $mobile-width) {
+    max-width: 90vw;
+  }
+}

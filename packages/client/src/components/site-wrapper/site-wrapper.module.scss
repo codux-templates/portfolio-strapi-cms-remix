@@ -1,0 +1,15 @@
+@import '@portfolio/client/src/styles/theme.module.scss';
+
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  & .header {
+    top: 0px;
+    position: sticky;
+    //we need z-index because there are things in position relatice in the siblings
+    z-index: 100;
+  }
+}

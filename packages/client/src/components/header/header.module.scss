@@ -1,0 +1,25 @@
+@import '@portfolio/client/src/styles/theme.module.scss';
+
+.root {
+  height: $header-height;
+  font: $nav-font;
+  padding: 1.2rem 2rem 1rem;
+  display: flex;
+  background-color: $background;
+  justify-content: space-between;
+}
+
+.logo {
+  font: 700 1.15rem/1.5 $my-prettyfont;
+  height: fit-content;
+}
+
+@media only screen and (max-width: $mobile-width) {
+  .logo {
+    display: none;
+  }
+
+  .menu {
+    width: 100%;
+  }
+}

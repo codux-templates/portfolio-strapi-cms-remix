@@ -1,0 +1,5 @@
+node_modules
+umd
+dist
+build
+vitest.config.ts

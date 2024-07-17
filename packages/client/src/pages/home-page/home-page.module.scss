@@ -1,0 +1,99 @@
+@import '@portfolio/client/src/styles/theme.module.scss';
+
+.root {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rectangle {
+  width: 50%;
+  height: 85vh;
+
+  &.img {
+    background-repeat: no-repeat;
+    background-image: url('https://wixmp-b7f7090100b13623109851bc.wixmp.com/spa/HP_Cover.jpg'),
+      linear-gradient(180deg, rgb(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    background-position: 50%;
+    background-size: cover;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-blend-mode: overlay;
+  }
+
+  &.textWrapper {
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+  }
+
+  & .text {
+    font: $heading-font;
+    text-align: center;
+    margin-top: 7rem;
+    width: 30vw;
+    max-width: 30rem;
+    font-size: 3.5vw;
+    height: 50vh;
+  }
+
+  @media only screen and (max-width: $mobile-width) {
+    width: 100%;
+    height: 55vh;
+
+    &.img {
+      display: none;
+    }
+
+    & .text {
+      width: auto;
+      font-size: 2.8rem;
+      max-width: 90vw;
+      margin-top: 5rem;
+    }
+  }
+}
+
+.gallery {
+  flex: auto;
+}
+
+.logo {
+  font-size: 28vw;
+  line-height: 0.683;
+  font-weight: 600;
+  position: absolute;
+  bottom: 0rem;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 1vw;
+
+  @media only screen and (max-width: $mobile-width) {
+    font-size: 6.5rem;
+    line-height: 0.68;
+  }
+}
+
+.logoWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.marquee {
+  width: 100vw;
+  overflow: hidden;
+  border-top: 2px solid $black;
+  border-bottom: 2px solid $black;
+  white-space: nowrap;
+  font: $heading-font;
+  font-weight: 500;
+}
+
+.marqueeContent {
+  width: fit-content;
+  & > span {
+    display: inline-block;
+    padding-inline: 10px;
+  }
+}

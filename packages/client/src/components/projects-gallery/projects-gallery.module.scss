@@ -1,0 +1,47 @@
+@import '@portfolio/client/src/styles/theme.module.scss';
+
+.root {
+  & img {
+    width: 100%;
+  }
+
+  .box {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0rem 2rem;
+    font: $nav-font;
+    border-bottom: solid $black 1px;
+
+    &:nth-child(14n + 1) {
+      background-color: $dirty-white;
+    }
+
+    &:nth-child(14n + 3) {
+      background-color: $dana-pink;
+    }
+
+    &:nth-child(14n + 5) {
+      background-color: $gold-yellow;
+    }
+
+    &:nth-child(14n + 7) {
+      background-color: $olive-green;
+    }
+
+    &:nth-child(14n + 9) {
+      background-color: $lavender;
+    }
+
+    &:nth-child(14n + 11) {
+      background-color: $aero-blue;
+    }
+
+    &:nth-child(14n + 13) {
+      background-color: $olive-green;
+    }
+    z-index: 1;
+  }
+}
