@@ -62,6 +62,7 @@ module.exports = {
                     },
                     typescript: {
                         alwaysTryTypes: true,
+                        project: 'packages/*/tsconfig.json',
                     },
                 },
             },

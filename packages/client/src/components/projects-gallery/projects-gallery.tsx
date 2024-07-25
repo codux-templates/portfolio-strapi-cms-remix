@@ -53,6 +53,7 @@ export const ProjectsGallery = ({ className, headerHeight }: ProjectsGalleryProp
                     </Link>
                     <img
                         key={`img_${project.id}`}
+                        alt={project.attributes.title}
                         src={getImageUrl(project.attributes.coverImage)}
                         style={{
                             top: `calc(${index + 1} * ${boxHeight} + ${_headerHeight})`,
