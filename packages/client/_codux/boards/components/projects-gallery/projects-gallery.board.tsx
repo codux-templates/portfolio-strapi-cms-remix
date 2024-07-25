@@ -1,14 +1,24 @@
 import { createBoard } from '@wixc3/react-board';
-import { ProjectsGallery } from '../../../../components/projects-gallery/projects-gallery';
-import { ComponentWrapper } from '../../../board-wrappers/component-wrapper';
+import { getFakeData } from '~/api/fake/fake-data';
+import { ProjectsGallery } from '~/components/projects-gallery/projects-gallery';
+import ComponentWrapper from '../../../wrappers/component-wrapper';
 
 export default createBoard({
     name: 'Projects Gallery',
-    Board: () => (
-        <ComponentWrapper>
-            <ProjectsGallery />
-        </ComponentWrapper>
-    ),
+    Board: () => {
+        const fakeData = getFakeData();
+        return (
+            <ComponentWrapper
+                loaderData={{
+                    root: {
+                        projects: fakeData.projects,
+                    },
+                }}
+            >
+                <ProjectsGallery />
+            </ComponentWrapper>
+        );
+    },
     isSnippet: false,
     environmentProps: {
         canvasWidth: 800,

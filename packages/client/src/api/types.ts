@@ -19,5 +19,8 @@ type StrapiParamKey = 'populate' | StrapiFilterParamKey | 'sort';
 export type StrapiParams = Partial<Record<StrapiParamKey, string>>;
 
 export interface Connection {
-  sendGetRequest<T>(apiPath: [StrapiPath, ...string[]], params?: Partial<Record<StrapiParamKey, string>>): Promise<T>;
+    sendGetRequest<T>(
+        apiPath: [StrapiPath, ...string[]],
+        params?: Partial<Record<StrapiParamKey, string>>,
+    ): Promise<T>;
 }

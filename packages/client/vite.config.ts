@@ -5,12 +5,12 @@ import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
 import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
-  plugins: [
-    remix({
-      ignoredRouteFiles: ['**/*.module.scss'],
-    }),
-    netlifyPlugin(),
-    tsconfigPaths(),
-    svgr(),
-  ],
+    plugins: [
+        remix({
+            ignoredRouteFiles: ['**/*.module.scss'],
+        }),
+        netlifyPlugin(),
+        tsconfigPaths(),
+        svgr(),
+    ],
 });

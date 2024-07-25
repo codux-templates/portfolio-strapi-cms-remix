@@ -3,16 +3,16 @@ import ProjectsPage from '~/app/routes/projects/route';
 import { PageWrapper } from '../../wrappers/page-wrapper';
 
 export default createBoard({
-  name: 'Page - Projects',
-  tags: ['Page'],
-  readyToSnapshot: () => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, 3000);
-    });
-  },
-  Board: () => (
-    <PageWrapper>
-      <ProjectsPage />
-    </PageWrapper>
-  ),
+    name: 'Page - Projects',
+    tags: ['Page'],
+    readyToSnapshot: () => {
+        return new Promise((resolve) => {
+            setTimeout(resolve, 3000);
+        });
+    },
+    Board: () => (
+        <PageWrapper>
+            <ProjectsPage />
+        </PageWrapper>
+    ),
 });

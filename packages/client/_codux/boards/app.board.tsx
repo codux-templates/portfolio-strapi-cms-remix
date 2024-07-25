@@ -8,53 +8,55 @@ import ProjectPage, { loader as projectPageLoader } from '~/app/routes/projects_
 import { ROUTES } from '~/router/config';
 
 const Router = createRemixStub([
-  {
-    Component: () => {
-      return <App />;
+    {
+        Component: () => {
+            return <App />;
+        },
+        id: 'root',
+        loader: rootPageLoader,
+        children: [
+            {
+                path: '/',
+                Component: () => {
+                    return <IndexPage />;
+                },
+            },
+            {
+                path: ROUTES.about.path,
+                Component: () => {
+                    return <AboutPage />;
+                },
+            },
+            {
+                path: ROUTES.projects.path,
+                Component: () => {
+                    return <ProjectsPage />;
+                },
+            },
+            {
+                path: ROUTES.project.path,
+                Component: () => {
+                    return <ProjectPage />;
+                },
+                loader: projectPageLoader,
+            },
+        ],
     },
-    id: 'root',
-    loader: rootPageLoader,
-    children: [
-      {
-        path: '/',
-        Component: () => {
-          return <IndexPage />;
-        },
-      },
-      {
-        path: ROUTES.about.path,
-        Component: () => {
-          return <AboutPage />;
-        },
-      },
-      {
-        path: ROUTES.projects.path,
-        Component: () => {
-          return <ProjectsPage />;
-        },
-      },
-      {
-        path: ROUTES.project.path,
-        Component: () => {
-          return <ProjectPage />;
-        },
-        loader: projectPageLoader,
-      },
-    ],
-  },
 ]);
 
 export default createBoard({
-  name: 'App',
-  Board: () => <Router />,
-  isSnippet: false,
-  readyToSnapshot: () => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, 3000);
-    });
-  },
-  environmentProps: {
-    canvasWidth: 840,
-    windowWidth: 1135,
-  },
+    name: 'App',
+    tags: ['App'],
+    Board: () => <Router />,
+    isSnippet: false,
+    readyToSnapshot: () => {
+        return new Promise((resolve) => {
+            setTimeout(resolve, 3000);
+        });
+    },
+    environmentProps: {
+        canvasWidth: 840,
+        windowWidth: 1920,
+        windowHeight: 1080,
+    },
 });

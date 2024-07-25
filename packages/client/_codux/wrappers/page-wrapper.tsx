@@ -8,42 +8,42 @@ import { ROUTES } from '~/router/config';
 type StubRouteObject = Parameters<typeof createRemixStub>[0][0];
 
 interface PageWrapperProps extends PropsWithChildren {
-  routeParams?: Omit<StubRouteObject, 'Component'>;
-  initialPath?: string;
+    routeParams?: Omit<StubRouteObject, 'Component'>;
+    initialPath?: string;
 }
 
 export function PageWrapper({ children, routeParams = {}, initialPath = '/' }: PageWrapperProps) {
-  const Page = createRemixStub([
-    {
-      Component: () => {
-        return <App />;
-      },
-      id: 'root',
-      loader: rootPageLoader,
-      ErrorBoundary: () => {
-        const navigate = useNavigate();
-        return (
-          <div>
-            error
-            <button
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              go back
-            </button>
-          </div>
-        );
-      },
-      children: [
-        ...Object.values(ROUTES).map((route) => ({
-          path: route.path,
-          ...routeParams,
-          Component: () => children,
-        })),
-      ],
-    },
-  ]);
+    const Page = createRemixStub([
+        {
+            Component: () => {
+                return <App />;
+            },
+            id: 'root',
+            loader: rootPageLoader,
+            ErrorBoundary: () => {
+                const navigate = useNavigate();
+                return (
+                    <div>
+                        error
+                        <button
+                            onClick={() => {
+                                navigate(-1);
+                            }}
+                        >
+                            go back
+                        </button>
+                    </div>
+                );
+            },
+            children: [
+                ...Object.values(ROUTES).map((route) => ({
+                    path: route.path,
+                    ...routeParams,
+                    Component: () => children,
+                })),
+            ],
+        },
+    ]);
 
-  return <Page initialEntries={[initialPath]} />;
+    return <Page initialEntries={[initialPath]} />;
 }
