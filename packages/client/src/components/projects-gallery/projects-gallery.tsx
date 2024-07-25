@@ -1,10 +1,10 @@
-import styles from './projects-gallery.module.scss';
-import { getImageUrl } from '../../api/strapi-connection';
-import { Fragment, useRef } from 'react';
-import { ROUTES } from '../../router/config';
-import cx from 'classnames';
 import { Link, useRouteLoaderData } from '@remix-run/react';
+import cx from 'classnames';
+import { Fragment, useRef } from 'react';
 import { loader } from '~/app/root';
+import { getImageUrl } from '../../api/strapi-connection';
+import { ROUTES } from '../../router/config';
+import styles from './projects-gallery.module.scss';
 export interface ProjectsGalleryProps {
     className?: string;
     headerHeight?: string;
@@ -20,6 +20,7 @@ export const ProjectsGallery = ({ className, headerHeight }: ProjectsGalleryProp
     const rootRef = useRef<HTMLDivElement>(null);
 
     const _headerHeight = headerHeight || '0px';
+
     /**
      * the idea behind this strange accordion is that each project description box has
      * position sticky and top = bottom of the project description box before it.
@@ -29,7 +30,7 @@ export const ProjectsGallery = ({ className, headerHeight }: ProjectsGalleryProp
      * otherwise if you have a lot of items the last ones aren't reachable
      *
      * so, since the top and height of the projects depends on the amount of the projects we have to do it
-     * with inlint style.
+     * with inline style.
      */
     const boxHeight = `min(calc((100vh - ${_headerHeight}) / ${projects?.length}), 4rem)`;
     return (
