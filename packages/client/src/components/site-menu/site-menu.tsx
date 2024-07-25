@@ -1,13 +1,13 @@
-import { Link, useMatch } from 'react-router-dom';
 import styles from './site-menu.module.scss';
 import * as RadixMenu from '@radix-ui/react-navigation-menu';
 import { ROUTES } from '../../router/config';
-import { apiHooks } from '../../api';
 import { offset, useFloating } from '@floating-ui/react-dom';
 import { ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { shift } from '@floating-ui/core';
 import cx from 'classnames';
+import { Link, useMatch, useNavigation, useRouteLoaderData } from '@remix-run/react';
+import { loader } from '~/app/root';
 
 export interface SiteMenuProps {
   className?: string;
@@ -19,7 +19,11 @@ export interface SiteMenuProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
 export const SiteMenu = ({ className, isOpen }: SiteMenuProps) => {
-  const { data: projects, isLoading } = apiHooks.useProjects();
+  const rootData = useRouteLoaderData<typeof loader>('root');
+  const projects = rootData?.projects;
+  const navigation = useNavigation();
+
+  const isLoading = navigation.state === 'loading';
 
   return (
     <RadixMenu.Root className={cx(styles.root, className)}>
@@ -36,7 +40,7 @@ export const SiteMenu = ({ className, isOpen }: SiteMenuProps) => {
               <div>Loading...</div>
             ) : (
               <RadixMenu.List className={styles.sub}>
-                {projects?.data.map((project) => (
+                {projects?.map((project) => (
                   <RadixMenu.Item key={project.id}>
                     <MenuLink to={ROUTES.project.to(project.id)} text={project.attributes.title} />
                   </RadixMenu.Item>
@@ -93,17 +97,19 @@ function FloatingContentWithTrigger(props: { children: ReactNode; text: string; 
       <RadixMenu.Trigger ref={refs.setReference} className={styles.Link}>
         {props.text}
       </RadixMenu.Trigger>
-      {createPortal(
-        <RadixMenu.Content
-          forceMount={props.isOpen}
-          ref={refs.setFloating}
-          style={{ ...floatingStyles }}
-          className={styles.content}
-        >
-          {props.children}
-        </RadixMenu.Content>,
-        document.body,
-      )}
+      {typeof window !== 'undefined' &&
+        typeof window.document !== 'undefined' &&
+        createPortal(
+          <RadixMenu.Content
+            forceMount={props.isOpen}
+            ref={refs.setFloating}
+            style={{ ...floatingStyles }}
+            className={styles.content}
+          >
+            {props.children}
+          </RadixMenu.Content>,
+          document.body,
+        )}
     </>
   );
 }

@@ -9,7 +9,12 @@
   & .header {
     top: 0px;
     position: sticky;
-    //we need z-index because there are things in position relatice in the siblings
+    //we need z-index because there are things in position relative in the siblings
     z-index: 100;
+  }
+
+  .content {
+    flex-grow: 1;
+    z-index: 0;
   }
 }

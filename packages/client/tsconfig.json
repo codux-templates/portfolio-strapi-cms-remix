@@ -13,9 +13,22 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "~/app/*": ["./app/*"],
+      "~/*": ["./src/*"]
+    },
+    // Vite takes care of building everything, not tsc.
+    "noEmit": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "netlify-edge-plugin.ts",
+    "_codux/boards/components/footer",
+    "_codux/component-templates"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

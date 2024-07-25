@@ -14,6 +14,7 @@
     padding: 0rem 2rem;
     font: $nav-font;
     border-bottom: solid $black 1px;
+    z-index: 1;
 
     &:nth-child(14n + 1) {
       background-color: $dirty-white;
@@ -42,6 +43,5 @@
     &:nth-child(14n + 13) {
       background-color: $olive-green;
     }
-    z-index: 1;
   }
 }

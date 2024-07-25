@@ -1,8 +1,16 @@
+import { vitePlugin as remix } from '@remix-run/dev';
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
 import svgr from 'vite-plugin-svgr';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr()],
+  plugins: [
+    remix({
+      ignoredRouteFiles: ['**/*.module.scss'],
+    }),
+    netlifyPlugin(),
+    tsconfigPaths(),
+    svgr(),
+  ],
 });

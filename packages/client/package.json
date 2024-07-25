@@ -1,25 +1,37 @@
 {
   "name": "@portfolio/client",
   "private": true,
+  "sideEffects": false,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "tsc": "tsc",
-    "preview": "vite preview",
-    "test": "vitest"
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
+    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+    "start": "netlify serve",
+    "typecheck": "tsc",
+    "deploy:dev": "netlify deploy --build",
+    "deploy:prod": "netlify deploy --build --prod"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.1",
+    "@netlify/functions": "^2.8.1",
+    "@netlify/remix-adapter": "^2.4.0",
     "@radix-ui/react-navigation-menu": "^1.2.0",
+    "@remix-run/node": "^2.10.3",
+    "@remix-run/react": "^2.10.3",
+    "@remix-run/serve": "^2.10.3",
     "classnames": "^2.5.1",
     "framer-motion": "^11.2.14",
+    "isbot": "^4.4.0",
     "markdown-to-jsx": "^7.4.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.21.2",
     "swr": "^2.2.5",
     "vite-plugin-svgr": "^4.2.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.10.3",
+    "vite-tsconfig-paths": "^4.3.2"
   }
 }

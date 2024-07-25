@@ -1,10 +1,10 @@
-import { useProjects } from '../../api/api-hooks';
 import styles from './projects-gallery.module.scss';
 import { getImageUrl } from '../../api/strapi-connection';
 import { Fragment, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { ROUTES } from '../../router/config';
 import cx from 'classnames';
+import { Link, useRouteLoaderData } from '@remix-run/react';
+import { loader } from '~/app/root';
 export interface ProjectsGalleryProps {
   className?: string;
   headerHeight?: string;
@@ -15,13 +15,11 @@ export interface ProjectsGalleryProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
 export const ProjectsGallery = ({ className, headerHeight }: ProjectsGalleryProps) => {
-  const { data: projects, isLoading } = useProjects();
+  const rootData = useRouteLoaderData<typeof loader>('root');
+  const projects = rootData?.projects;
   const rootRef = useRef<HTMLDivElement>(null);
 
   const _headerHeight = headerHeight || '0px';
-  if (isLoading) {
-    return <div>Loading..</div>;
-  }
   /**
    * the idea behind this strange accordion is that each project description box has
    * position sticky and top = bottom of the project description box before it.
@@ -33,10 +31,10 @@ export const ProjectsGallery = ({ className, headerHeight }: ProjectsGalleryProp
    * so, since the top and height of the projects depends on the amount of the projects we have to do it
    * with inlint style.
    */
-  const boxHeight = `min(calc((100vh - ${_headerHeight}) / ${projects?.data.length}), 4rem)`;
+  const boxHeight = `min(calc((100vh - ${_headerHeight}) / ${projects?.length}), 4rem)`;
   return (
     <div className={cx(styles.root, className)} ref={rootRef}>
-      {projects?.data.map((project, index) => (
+      {projects?.map((project, index) => (
         <Fragment key={project.id}>
           <Link
             to={ROUTES.project.to(project.id)}
