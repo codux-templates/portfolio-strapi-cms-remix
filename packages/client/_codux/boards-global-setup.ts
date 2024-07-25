@@ -1,2 +1,2 @@
-import '../styles/index.css';
-import '../styles/util-classes.scss';
+import '../src/styles/index.css';
+import '../src/styles/util-classes.scss';
