@@ -1,5 +1,2 @@
-import { Projects } from '../projects/projects';
-
-export default function IndexPage() {
-    return <Projects />;
-}
+export * from '../projects/route';
+export { default } from '../projects/route';

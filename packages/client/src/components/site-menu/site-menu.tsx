@@ -29,7 +29,7 @@ export const SiteMenu = ({ className, isOpen }: SiteMenuProps) => {
         <RadixMenu.Root className={cx(styles.root, className)}>
             <RadixMenu.List className={styles.topMenu}>
                 <RadixMenu.Item>
-                    <MenuLink to={ROUTES.projects.to()} text="Home" />
+                    <MenuLink to={ROUTES.home.to()} text="Home" />
                 </RadixMenu.Item>
                 <RadixMenu.Item>
                     <MenuLink to={ROUTES.about.to()} text="About" />
