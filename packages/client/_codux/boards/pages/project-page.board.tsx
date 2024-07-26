@@ -11,7 +11,7 @@ export default createBoard({
         });
     },
     Board: () => (
-        <PageWrapper initialPath={'/projects/3'} routeParams={{ loader }}>
+        <PageWrapper initialPath={'/projects/3'} pageRouteParams={{ loader }}>
             <ProjectPage />
         </PageWrapper>
     ),
