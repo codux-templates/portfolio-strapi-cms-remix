@@ -83,7 +83,11 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
             name: 'author',
             content: 'Codux',
         },
-        { tagName: 'link', rel: 'canonical', href: data.canonicalUrl },
+        {
+            tagName: 'link',
+            rel: 'canonical',
+            href: data.canonicalUrl,
+        },
         {
             property: 'robots',
             content: 'index, follow',

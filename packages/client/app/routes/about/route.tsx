@@ -46,7 +46,11 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
             name: 'author',
             content: 'Codux',
         },
-        { tagName: 'link', rel: 'canonical', href: data?.canonicalUrl },
+        {
+            tagName: 'link',
+            rel: 'canonical',
+            href: data?.canonicalUrl,
+        },
         {
             property: 'robots',
             content: 'index, follow',
@@ -88,10 +92,6 @@ export const links: LinksFunction = () => {
             rel: 'icon',
             href: '/favicon.ico',
             type: 'image/ico',
-        },
-        {
-            rel: 'canonical',
-            href: 'https://portfolio-app.com/about',
         },
     ];
 };
