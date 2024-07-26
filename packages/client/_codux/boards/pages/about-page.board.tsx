@@ -1,6 +1,6 @@
 import { createBoard } from '@wixc3/react-board';
 import AboutPage from '~/app/routes/about/route';
-import { PageWrapper } from '../../wrappers/page-wrapper';
+import { PageWrapper } from '../../board-wrappers/page-wrapper';
 
 export default createBoard({
     name: 'Page - About',

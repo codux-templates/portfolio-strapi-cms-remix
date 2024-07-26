@@ -26,8 +26,8 @@
   },
   "resolve": {
     "alias": {
-      "~/app/*": "./app/*",
-      "~/*": "./src/*"
+      "~/app/*": "./packages/client/app/*",
+      "~/*": "./packages/client/src/*"
     }
   },
   "svgLoader": "both",
@@ -35,12 +35,6 @@
     "environmentVariables": {
       "VITE_API": "https://determined-vitality-9514a6552e.strapiapp.com/api/",
       "VITE_MEDIA": "https://determined-vitality-9514a6552e.strapiapp.com"
-    }
-  },
-  "formatting": {
-    "formattingFile": {
-      "type": "editorconfig",
-      "filePath": "/.editorconfig"
     }
   }
 }

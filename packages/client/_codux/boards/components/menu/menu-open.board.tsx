@@ -1,5 +1,5 @@
 import { createBoard } from '@wixc3/react-board';
-import ComponentWrapper from '../../../wrappers/component-wrapper';
+import ComponentWrapper from '../../../board-wrappers/component-wrapper';
 import { SiteMenu } from '~/components/site-menu/site-menu';
 
 export default createBoard({

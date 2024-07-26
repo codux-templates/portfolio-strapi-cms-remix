@@ -1,7 +1,7 @@
 import { createBoard } from '@wixc3/react-board';
 import { getFakeData } from '~/api/fake/fake-data';
 import { ProjectsGallery } from '~/components/projects-gallery/projects-gallery';
-import ComponentWrapper from '../../../wrappers/component-wrapper';
+import ComponentWrapper from '../../../board-wrappers/component-wrapper';
 
 export default createBoard({
     name: 'Projects Gallery',

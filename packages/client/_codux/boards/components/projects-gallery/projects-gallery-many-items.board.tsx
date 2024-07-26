@@ -1,6 +1,6 @@
 import { createBoard } from '@wixc3/react-board';
 import { getFakeData } from '~/api/fake/fake-data';
-import ComponentWrapper from '../../../wrappers/component-wrapper';
+import ComponentWrapper from '../../../board-wrappers/component-wrapper';
 import { ProjectsGallery } from '~/components/projects-gallery/projects-gallery';
 
 export default createBoard({

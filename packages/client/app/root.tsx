@@ -10,12 +10,12 @@ import {
 import { APIContextProvider } from '~/api';
 import { getApi } from '~/api/data-api';
 import { SiteWrapper } from '~/components/site-wrapper/site-wrapper';
-import '../src/styles/index.css';
-import '../src/styles/util-classes.scss';
+import '~/styles/index.css';
+import '~/styles/util-classes.scss';
 
 /* This code does not work in Codux, because our resolver does not support the `url` query parameter.
-import indexStylesHref from '../src/styles/index.css?url';
-import utilClassesStylesHref from '../src/styles/util-classes.scss?url';
+import indexStylesHref from '~/styles/index.css?url';
+import utilClassesStylesHref from '~/styles/util-classes.scss?url';
 export const links: LinksFunction = () => {
   return [
     { rel: 'stylesheet', href: indexStylesHref },
