@@ -68,7 +68,6 @@ export function ErrorBoundary() {
     const isRouteError = isRouteErrorResponse(error);
 
     useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const { title, message } = getErrorDetails(error);
 
         // hack to handle https://github.com/remix-run/remix/issues/1136
