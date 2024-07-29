@@ -1,26 +1,39 @@
 import { LinksFunction, MetaFunction, LoaderFunctionArgs } from '@remix-run/node';
-import { useLoaderData, useNavigation } from '@remix-run/react';
+import {
+    isRouteErrorResponse,
+    json,
+    useLoaderData,
+    useNavigation,
+    useRouteError,
+} from '@remix-run/react';
 import cx from 'classnames';
 import Markdown from 'markdown-to-jsx';
 import { getApi } from '~/api/data-api';
 import { ProjectItem } from '~/components/project-item/project-item';
 import { ROUTES } from '~/router/config';
 import styles from './project-page.module.scss';
+import { ProjectNotFound } from '~/components/project-not-found/project-not-found';
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     const api = getApi();
 
     const projectIdParam = params.projectId;
-    if (!projectIdParam) throw new Error('projectId is required');
+    if (projectIdParam === undefined) {
+        throw json('projectId is required', { status: 400 });
+    }
     const projectId = parseInt(projectIdParam);
 
-    const { data: project } = await api.getProject(projectId);
-    const { data: projectItems } = await api.getProjectItemsByProject(projectId);
+    try {
+        const { data: project } = await api.getProject(projectId);
+        const { data: projectItems } = await api.getProjectItemsByProject(projectId);
 
-    const requestOrigin = new URL(request.url).origin;
-    const canonicalUrl = new URL(ROUTES.project.to(project.id), requestOrigin).toString();
+        const requestOrigin = new URL(request.url).origin;
+        const canonicalUrl = new URL(ROUTES.project.to(project.id), requestOrigin).toString();
 
-    return { project, projectItems, canonicalUrl };
+        return json({ project, projectItems, canonicalUrl });
+    } catch (e) {
+        throw json('Project not found', { status: 404 });
+    }
 };
 
 export default function ProjectPage() {
@@ -122,6 +135,19 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
         },
     ];
 };
+
+export function ErrorBoundary() {
+    const error = useRouteError();
+
+    if (isRouteErrorResponse(error)) {
+        switch (error.status) {
+            case 404:
+                return <ProjectNotFound />;
+        }
+    }
+
+    throw error;
+}
 
 export const links: LinksFunction = () => {
     return [

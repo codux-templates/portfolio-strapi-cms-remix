@@ -7,6 +7,7 @@ const HOME = '/';
 const ABOUT = '/about';
 const PROJECTS = '/projects';
 const PROJECT = `/projects/:projectId`;
+const ERROR = '/error';
 
 /**
  * @property path - the path (template) of the route to be used in the router
@@ -19,6 +20,10 @@ export const ROUTES = {
     project: {
         path: PROJECT,
         to: (projectId: number) => generatePath(PROJECT, { projectId: projectId.toString() }),
+    },
+    error: {
+        path: ERROR,
+        to: (title: string, message?: string) => `${ERROR}?title=${title}&message=${message}`,
     },
 };
 
