@@ -57,10 +57,6 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
             content: 'Welcome to the Portfolio App',
         },
         {
-            name: 'author',
-            content: 'Codux',
-        },
-        {
             tagName: 'link',
             rel: 'canonical',
             href: data?.canonicalUrl,
