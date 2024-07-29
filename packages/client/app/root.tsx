@@ -12,11 +12,11 @@ import { APIContextProvider } from '~/api';
 import { getApi } from '~/api/data-api';
 import { SiteWrapper } from '~/components/site-wrapper/site-wrapper';
 import { ROUTES } from '~/router/config';
-import '~/styles/index.css';
+import '~/styles/index.scss';
 import '~/styles/util-classes.scss';
 
 /* This code does not work in Codux, because our resolver does not support the `url` query parameter.
-import indexStylesHref from '~/styles/index.css?url';
+import indexStylesHref from '~/styles/index.scss?url';
 import utilClassesStylesHref from '~/styles/util-classes.scss?url';
 export const links: LinksFunction = () => {
   return [
