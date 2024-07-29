@@ -1225,6 +1225,11 @@
   resolved "https://registry.npmjs.org/@faker-js/faker/-/faker-8.4.1.tgz"
   integrity sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==
 
+"@file-services/types@^9.4.0":
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/@file-services/types/-/types-9.4.0.tgz#152a37db48ad8b574a0023b5105a4a257314e53b"
+  integrity sha512-Uy/Maomdzq2d8lRVM5rogyz++r7BK7x264d+oP2CycCaFuMaAd7gGEAFjUMJLqLFWhXCAejLodewSsgC1/R5uQ==
+
 "@floating-ui/core@^1.0.0":
   version "1.6.2"
   resolved "https://registry.npmjs.org/@floating-ui/core/-/core-1.6.2.tgz"
@@ -4082,7 +4087,15 @@
     "@webassemblyjs/ast" "1.12.1"
     "@xtuc/long" "4.2.2"
 
-"@wixc3/board-core@^3.0.0":
+"@wixc3/app-core@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@wixc3/app-core/-/app-core-3.0.1.tgz#60309442de632df907af92580c4bcc1fcba31166"
+  integrity sha512-rgTCHdsMmOk97yN1rTySgH30CZGmmNEDJwkNuJ1xOFu7vvNtjKH3uXBtf4eCr1v52CH0noH5IqKv6bxQemu4MA==
+  dependencies:
+    "@file-services/types" "^9.4.0"
+    "@wixc3/react-board" "^3.0.1"
+
+"@wixc3/board-core@^3.0.0", "@wixc3/board-core@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@wixc3/board-core/-/board-core-3.0.1.tgz#61ecb6bb1e51badb0d14a8416557191b395c4ed0"
   integrity sha512-YEq1kCJjU6mXCyEMu/LrUTaeOPP0+wmHpIQJ3RwIDBs5RV2vr4N5LBy8dccnPEQC5pA8GyVrrO4ywMfVKO/pxA==
@@ -4093,6 +4106,13 @@
   integrity sha512-Qjws0cxFvwja2yTbBm6X301ZOSgsAhcIyD6NyPcBJcXV3KoqoFMEFXeP29NMQmEmmkVEc3BPYFodazfNFBuwsg==
   dependencies:
     "@wixc3/board-core" "^3.0.0"
+
+"@wixc3/react-board@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@wixc3/react-board/-/react-board-3.0.1.tgz#b030d2fbad5214c92fb6feb8cbf203001902eaaa"
+  integrity sha512-q5Vx7j+w9cIrb0Lfo49gJo87rHGk8MKhTgR8DBp/q6xqsApZLwiEwYLCWenH4DVeWyzTxz2fdaGhTh7jVCfKjA==
+  dependencies:
+    "@wixc3/board-core" "^3.0.1"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"

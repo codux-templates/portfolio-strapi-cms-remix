@@ -7,9 +7,11 @@ import {
     isRouteErrorResponse,
     useRouteError,
 } from '@remix-run/react';
+import { useEffect } from 'react';
 import { APIContextProvider } from '~/api';
 import { getApi } from '~/api/data-api';
 import { SiteWrapper } from '~/components/site-wrapper/site-wrapper';
+import { ROUTES } from '~/router/config';
 import '~/styles/index.css';
 import '~/styles/util-classes.scss';
 
@@ -61,34 +63,37 @@ export default function App() {
 }
 
 export function ErrorBoundary() {
-    let error = useRouteError();
+    const error = useRouteError();
+
+    const isRouteError = isRouteErrorResponse(error);
+
+    useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const { title, message } = getErrorDetails(error);
+
+        // hack to handle https://github.com/remix-run/remix/issues/1136
+        window.location.href = ROUTES.error.to(title, message);
+    }, [isRouteError, error]);
+
+    // we are navigating to the error page in the effect above
+    return null;
+}
+
+function getErrorDetails(error: unknown) {
+    let title: string;
+    let message: string | undefined;
 
     if (isRouteErrorResponse(error)) {
-        return (
-            <>
-                <h1>
-                    {error.status} {error.statusText}
-                </h1>
-                <p>{error.data}</p>
-            </>
-        );
-    }
-
-    if (error instanceof Error) {
-        error = error.message;
+        if (error.status === 404) {
+            title = 'Page Not Found';
+            message = "Looks like the page you're trying to visit doesn't exist";
+        } else {
+            title = `${error.status} - ${error.statusText}`;
+            message = error.data?.message ?? '';
+        }
     } else {
-        error = JSON.stringify(error);
+        title = 'Unknown error ocurred';
     }
 
-    return (
-        <section
-            style={{
-                color: 'red',
-                fontSize: 18,
-                textAlign: 'center',
-            }}
-        >
-            {String(error)}
-        </section>
-    );
+    return { title, message };
 }

@@ -1,9 +1,9 @@
 import { createBoard } from '@wixc3/react-board';
-import ProjectPage, { loader } from '~/app/routes/projects_.$projectId/route';
 import { PageWrapper } from '../../board-wrappers/page-wrapper';
+import ErrorPage from '~/app/routes/error/route';
 
 export default createBoard({
-    name: 'Page - Project',
+    name: 'Page - Error',
     tags: ['Page'],
     readyToSnapshot: () => {
         return new Promise((resolve) => {
@@ -11,8 +11,10 @@ export default createBoard({
         });
     },
     Board: () => (
-        <PageWrapper initialPath={'/projects/3'} pageRouteParams={{ loader }}>
-            <ProjectPage />
+        <PageWrapper
+            initialPath={`/error?title=Page Not Found&message=Looks like the page you're trying to visit doesn't exist`}
+        >
+            <ErrorPage />
         </PageWrapper>
     ),
 });
