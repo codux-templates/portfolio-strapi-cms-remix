@@ -10,9 +10,9 @@ import cx from 'classnames';
 import Markdown from 'markdown-to-jsx';
 import { getApi } from '~/api/data-api';
 import { ProjectItem } from '~/components/project-item/project-item';
-import { ROUTES } from '~/router/config';
-import styles from './project-page.module.scss';
 import { ProjectNotFound } from '~/components/project-not-found/project-not-found';
+import { getUrlOriginWithPath } from '~/utils';
+import styles from './project-page.module.scss';
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     const api = getApi();
@@ -27,9 +27,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
         const { data: project } = await api.getProject(projectId);
         const { data: projectItems } = await api.getProjectItemsByProject(projectId);
 
-        const requestOrigin = new URL(request.url).origin;
-        const canonicalUrl = new URL(ROUTES.project.to(project.id), requestOrigin).toString();
-
+        const canonicalUrl = getUrlOriginWithPath(request.url);
         return json({ project, projectItems, canonicalUrl });
     } catch (e) {
         throw json('Project not found', { status: 404 });

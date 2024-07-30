@@ -4,13 +4,11 @@ import { MetaFunction, useRouteLoaderData } from '@remix-run/react';
 import { LinksFunction, LoaderFunctionArgs } from '@remix-run/node';
 import { getImageUrl } from '~/api/strapi-connection';
 import { loader as rootLoader } from '~/app/root';
-import { ROUTES } from '~/router/config';
+import { getUrlOriginWithPath } from '~/utils';
 import styles from './about-page.module.scss';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-    const requestOrigin = new URL(request.url).origin;
-
-    return { canonicalUrl: new URL(ROUTES.about.path, requestOrigin).toString() };
+    return { canonicalUrl: getUrlOriginWithPath(request.url) };
 };
 
 export default function AboutPage() {
@@ -36,11 +34,15 @@ export default function AboutPage() {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
+    const title = 'Portfolio App - About Page';
+    const description = 'Welcome to the Portfolio App About Page';
+    const imageUrl = 'https://my-portfolio/image.png';
+
     return [
-        { title: 'Portfolio App - About' },
+        { title },
         {
             name: 'description',
-            content: 'Welcome to the Portfolio App',
+            content: description,
         },
         {
             tagName: 'link',
@@ -53,15 +55,15 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
         },
         {
             property: 'og:title',
-            content: 'Portfolio App',
+            content: title,
         },
         {
             property: 'og:description',
-            content: 'Welcome to the Portfolio App',
+            content: description,
         },
         {
             property: 'og:image',
-            content: 'https://my-portfolio/og-image.png',
+            content: imageUrl,
         },
         {
             name: 'twitter:card',
@@ -69,15 +71,15 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
         },
         {
             name: 'twitter:title',
-            content: 'Portfolio App',
+            content: title,
         },
         {
             name: 'twitter:description',
-            content: 'Welcome to the Portfolio App',
+            content: description,
         },
         {
             name: 'twitter:image',
-            content: 'https://my-portfolio/twitter-image.png',
+            content: imageUrl,
         },
     ];
 };

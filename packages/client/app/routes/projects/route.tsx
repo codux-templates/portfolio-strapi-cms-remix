@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 import { ProjectsGallery } from '~/components/projects-gallery/projects-gallery';
 import * as theme from '~/styles/theme.module.scss';
 import styles from './projects.module.scss';
+import { getUrlOriginWithPath } from '~/utils';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-    return { canonicalUrl: new URL(request.url).origin };
+    return { canonicalUrl: getUrlOriginWithPath(request.url) };
 };
 
 export default function ProjectsPage() {
@@ -50,11 +51,15 @@ export default function ProjectsPage() {
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
+    const title = 'Portfolio App';
+    const description = 'Welcome to the Portfolio App';
+    const imageUrl = 'https://my-portfolio/og-image.png';
+
     return [
-        { title: 'Portfolio App' },
+        { title },
         {
             name: 'description',
-            content: 'Welcome to the Portfolio App',
+            content: description,
         },
         {
             tagName: 'link',
@@ -67,15 +72,15 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
         },
         {
             property: 'og:title',
-            content: 'Portfolio App',
+            content: title,
         },
         {
             property: 'og:description',
-            content: 'Welcome to the Portfolio App',
+            content: description,
         },
         {
             property: 'og:image',
-            content: 'https://my-portfolio/og-image.png',
+            content: imageUrl,
         },
         {
             name: 'twitter:card',
@@ -83,15 +88,15 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
         },
         {
             name: 'twitter:title',
-            content: 'Portfolio App',
+            content: title,
         },
         {
             name: 'twitter:description',
-            content: 'Welcome to the Portfolio App',
+            content: description,
         },
         {
             name: 'twitter:image',
-            content: 'https://my-portfolio/twitter-image.png',
+            content: imageUrl,
         },
     ];
 };
