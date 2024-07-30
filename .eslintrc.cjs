@@ -71,6 +71,14 @@ module.exports = {
                 'plugin:import/recommended',
                 'plugin:import/typescript',
             ],
+            rules: {
+                //strapi types cause this error
+                '@typescript-eslint/no-unsafe-assignment': 'off',
+                '@typescript-eslint/no-unused-vars': [
+                    'error',
+                    { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+                ],
+            },
         },
 
         // Node
