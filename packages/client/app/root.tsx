@@ -15,16 +15,6 @@ import { ROUTES } from '~/router/config';
 import '~/styles/index.scss';
 import '~/styles/util-classes.scss';
 
-/* This code does not work in Codux, because our resolver does not support the `url` query parameter.
-import indexStylesHref from '~/styles/index.scss?url';
-import utilClassesStylesHref from '~/styles/util-classes.scss?url';
-export const links: LinksFunction = () => {
-  return [
-    { rel: 'stylesheet', href: indexStylesHref },
-    { rel: 'stylesheet', href: utilClassesStylesHref },
-  ];
-};*/
-
 export const loader = async () => {
     const api = getApi();
     const { data: projects } = await api.getProjects();
