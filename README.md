@@ -78,9 +78,7 @@ please read the [docs](https://classic.yarnpkg.com/en/docs/workspaces) on yarn w
 - [classnames](https://github.com/JedWatson/classnames): to easily assign multiple classes to elements
 - [vitest](https://vitest.dev/guide/): to write and run unit tests
 - [faker](https://fakerjs.dev/): to generate mock content. both for codux boards and unit tests
-- [SWR](https://swr.vercel.app/docs/getting-started): to cache content in the client app, to fetch new content every once in a while (polling).  
-  And to have a simple api between the content cache and react components.
-- [react router](https://reactrouter.com/en/main): to create multiple routes (pages) and navigate between them
+- [remix](https://remix.run): to create multiple routes (pages) and navigate between them with server side rendering
 - [radix-ui navigation menu](https://www.radix-ui.com/primitives/docs/components/navigation-menu): to create an accessible site navigation menu. this component comes unstyled
 - [floatin-ui](https://floating-ui.com/docs/react): to position floating elements, like sub-menus, tooltips, popovers, etc.
 - [framer motion](https://www.framer.com/motion/animation/): to create animations
@@ -124,10 +122,7 @@ for that reason, we have to wrap our components in the boards with context provi
 
 #### router
 
-because in codux our app runs inside an iframe we have to use a [`memory router`](https://reactrouter.com/en/main/routers/create-memory-router) instead of a [`browser router`](https://reactrouter.com/en/main/routers/create-browser-router) in the real `App`  
-but we can and should use the real [routes](packages/client/src/router/routes.tsx) for page boards.
-for simple component boards we still should provide a router context, otherwise, if there is a `Link` in the component it will throw an error. but we don't use real routes, we add a fake route
-pointing to the component we want to render in the board.
+In the boards we use [`createRemixStub`](https://remix.run/docs/en/main/utils/create-remix-stub).
 
 #### data
 
@@ -140,8 +135,7 @@ we have two options here:
 
 so we have 3 types of board wrapper components:
 
-1. [`ComponentWrapper`](packages/client/src/_codux/board-wrappers/component-wrapper.tsx) used for simple components. with fake data and fake routes (links won't throw but won't work either)
-2. [`PageWrapper`](packages/client/src/_codux/board-wrappers/page-wrapper.tsx) used for page components. with fake data and real routes (links will work)
-3. [`RealDataWrapper`](packages/client/src/_codux/board-wrappers/real-data-wrapper.tsx) used for the App board. with real data and real routes (works only if you have the local strapi server running or the env variables in the codux config point to a remote server).
+1. [`ComponentWrapper`](packages/client/_codux/board-wrappers/component-wrapper.tsx) used for simple components. Can be provided with fake route data and it fakes routes (links won't throw but won't work either)
+2. [`PageWrapper`](packages/client/_codux/board-wrappers/page-wrapper.tsx) used for page components. Uses real data and fakes routes (all links will navigate to provided page)
 
 you can, of course, change/add wrappers as it is convenient for you.
