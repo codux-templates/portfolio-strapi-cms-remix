@@ -14,11 +14,11 @@
   "scripts": {
     "lint": "eslint .",
     "prettify": "prettier . --write",
-    "verify": "yarn run lint && yarn workspaces run tsc",
-    "build": "npm run lint && yarn workspaces run build",
-    "test": "yarn workspaces run test",
-    "start:client:dev": "yarn workspace @portfolio/client run dev",
-    "start:server:dev": "yarn workspace @portfolio/strapi run develop"
+    "verify": "npm run lint && npm run tsc --workspaces",
+    "build": "npm run lint && npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "start:client:dev": "npm run dev --workspace=@portfolio/client",
+    "start:server:dev": "npm run develop --workspace=@portfolio/strapi"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.24.7",

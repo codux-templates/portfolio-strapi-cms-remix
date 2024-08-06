@@ -6,9 +6,9 @@ the client is initially configured to run with the wix strapi remote (deployed) 
 
 after git clone  
 in the root run:  
-`yarn`
+`npm install`
 
-`yarn start:client:dev`
+`npm run start:client:dev`
 
 and you can see the website.
 
@@ -24,11 +24,11 @@ this script will create:
 - `.env.development.local` file in the client package (`.env` is pointing to the wix remote server, when you deploy your strapi server change to the appropriate domain )
 - generate a rendom project id in the `strapi/package.json`
 
-`yarn start:server:dev` to start the local strapi server
+`npm run start:server:dev` to start the local strapi server
 go the the strapi admin and follow strapi instructions
 
 in a different terminal run  
-`yarn start:client:dev` to start the client web app
+`npm run start:client:dev` to start the client web app
 
 ### codux boards with local strapi
 
@@ -40,7 +40,7 @@ if you want you can copy our content to your local strapi DB.
 all you need to do is run
 
 ```
-yarn workspace @portfolio/strapi run strapi transfer --from https://determined-vitality-9514a6552e.strapiapp.com/admin --from-token b87a8467b27822083506c041a3cd24c32107cea7999bd6a00c6c672268e4b7dd53fc7920d3ffeed9d30d029103230f297890d3ff5948fe13a9fdc9711e12094388f4ae901a4634f2f175c191a6cf7be7c664570afc33345f51dc0765b3e0b517860ab5efdda8737a86fa119c080ae7ed16ef73f8b432474349b90672abe8e0d7 --only content,files
+npm run strapi transfer --from https://determined-vitality-9514a6552e.strapiapp.com/admin --from-token --workspace=@portfolio/strapi b87a8467b27822083506c041a3cd24c32107cea7999bd6a00c6c672268e4b7dd53fc7920d3ffeed9d30d029103230f297890d3ff5948fe13a9fdc9711e12094388f4ae901a4634f2f175c191a6cf7be7c664570afc33345f51dc0765b3e0b517860ab5efdda8737a86fa119c080ae7ed16ef73f8b432474349b90672abe8e0d7 --only content,files
 ```
 
 in the root of the project.  
@@ -53,26 +53,26 @@ there are a few things to pay attention to
 
 ## scrips
 
-- `yarn verify` - will run lint and typescript on the project
-- `yarn build` - will build both strapi and client
-- `yarn test` - will run the tests in the client project (there are no tests in strapi)
-- `yarn start:client:dev` - will run the client in dev mode
-- `start:server:dev` - will run strapi in dev mode
+- `npm run verify` - will run lint and typescript on the project
+- `npm run build` - will build both strapi and client
+- `npm run test` - will run the tests in the client project (there are no tests in strapi)
+- `npm run start:client:dev` - will run the client in dev mode
+- `npm run start:server:dev` - will run strapi in dev mode
 
-\*\* you can run `yarn start:client:dev --mode production` for the app to use the values in the `.env` file instead of the `.env.development.local` file.  
+\*\* you can run `npm run start:client:dev --mode production` for the app to use the values in the `.env` file instead of the `.env.development.local` file.  
 see [vite docs](https://vitejs.dev/guide/env-and-mode#env-files)
 
-this is a monorepo using yarn workspaces.
-you can run a script in the strapi package with `yarn workspace @portfolio/strapi ...`
-or run a script in the client package with `yarn workspace @portfolio/client ...`
+this is a monorepo using NPM workspaces.
+you can run a script in the strapi package with `npm run ... --workspace=@portfolio/strapi`
+or run a script in the client package with `npm run ... --workspace=@portfolio/client`
 
-please read the [docs](https://classic.yarnpkg.com/en/docs/workspaces) on yarn workspaces
+please read the [docs](https://docs.npmjs.com/cli/v7/using-npm/workspaces) on NPM workspaces
 
 ## stack
 
 - [strapi](https://docs.strapi.io/): to store our content and serve it to the client app
 - [vite](https://vitejs.dev/): a front end development environment to build our client app
-- [yarn](https://classic.yarnpkg.com/en/docs/workspaces): to create a monorepo and manage dependencies
+- [npm](https://docs.npmjs.com/cli/v7/using-npm/workspaces): to create a monorepo and manage dependencies
 - [eslint](https://eslint.org/): to avoid mistakes by static analysis of the code
 - [scss](https://sass-lang.com/guide/) [modules](https://github.com/css-modules/css-modules): to write scoped css with more ease
 - [classnames](https://github.com/JedWatson/classnames): to easily assign multiple classes to elements
