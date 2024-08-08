@@ -1,5 +1,5 @@
 [build]
-command = "npm run build"
+command = "npm run build --workspace=@portfolio/client"
 publish = "packages/client/build/client"
 
 [dev]
