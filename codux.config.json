@@ -24,6 +24,9 @@
   "styling": {
     "solution": "scss modules"
   },
+  "styleFilesConfig": {
+    "commonStyleFilePattern": "**/theme.module.scss"
+  },
   "resolve": {
     "alias": {
       "~/app/*": "./packages/client/app/*",
