@@ -76,7 +76,7 @@ function createAbout(settings?: FakeDataSettings): StrapiAbout {
             image: createImage(),
             richtext: getMarkdown(),
             email: footerData?.email || faker.internet.email({ provider: 'gmail', lastName: '' }),
-            phone: footerData?.phone || faker.phone.number('###-###-####'),
+            phone: footerData?.phone || faker.phone.number(),
             facebook: faker.internet.url(),
             pinterest: faker.internet.url(),
             instagram: faker.internet.url(),

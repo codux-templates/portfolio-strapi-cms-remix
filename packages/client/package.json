@@ -14,25 +14,48 @@
     "deploy:prod": "netlify deploy --build --prod"
   },
   "dependencies": {
-    "@floating-ui/core": "^1.6.6",
-    "@floating-ui/react-dom": "^2.1.1",
-    "@netlify/functions": "^2.8.1",
-    "@netlify/remix-adapter": "^2.4.0",
+    "@floating-ui/core": "^1.6.8",
+    "@floating-ui/react-dom": "^2.1.2",
     "@radix-ui/react-navigation-menu": "^1.2.0",
-    "@remix-run/node": "^2.10.3",
-    "@remix-run/react": "^2.10.3",
-    "@remix-run/serve": "^2.10.3",
+    "@remix-run/node": "^2.12.0",
+    "@remix-run/react": "^2.12.0",
+    "@remix-run/serve": "^2.12.0",
     "classnames": "^2.5.1",
-    "framer-motion": "^11.2.14",
-    "isbot": "^4.4.0",
-    "markdown-to-jsx": "^7.4.7",
+    "framer-motion": "^11.5.5",
+    "isbot": "^5.1.17",
+    "markdown-to-jsx": "^7.5.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "vite-plugin-svgr": "^4.2.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.10.3",
-    "@wixc3/app-core": "^3.0.1",
-    "vite-tsconfig-paths": "^4.3.2"
+    "@faker-js/faker": "^9.0.1",
+    "@netlify/remix-adapter": "^2.5.1",
+    "@remix-run/dev": "^2.12.0",
+    "@remix-run/testing": "^2.12.0",
+    "@types/react": "^18.3.7",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.6.0",
+    "@typescript-eslint/parser": "^8.6.0",
+    "@wixc3/react-board": "^4.2.0",
+    "@wixc3/define-remix-app": "^4.2.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.38.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-plugin-react": "^7.36.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "jsdom": "^25.0.0",
+    "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
+    "sass": "^1.79.1",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.6",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^5.0.1",
+    "vitest": "^2.1.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }

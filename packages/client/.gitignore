@@ -1,2 +1,6 @@
-build/*
-.netlify/*
+node_modules
+
+/.cache
+/.netlify
+/build
+.env

@@ -29,7 +29,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
 
         const canonicalUrl = getUrlOriginWithPath(request.url);
         return json({ project, projectItems, canonicalUrl });
-    } catch (e) {
+    } catch {
         throw json('Project not found', { status: 404 });
     }
 };

@@ -38,7 +38,8 @@ export type GetValues<TSchemaUID extends Common.UID.Schema> = {
     : never;
 
 type RelationValue<TAttribute extends Attribute.Attribute> =
-    TAttribute extends Attribute.Relation<infer _TOrigin, infer TRelationKind, infer TTarget>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    TAttribute extends Attribute.Relation<any, infer TRelationKind, infer TTarget>
         ? Utils.Expression.MatchFirst<
               [
                   [
@@ -70,7 +71,8 @@ type DynamicZoneValue<TAttribute extends Attribute.Attribute> =
         : never;
 
 type MediaValue<TAttribute extends Attribute.Attribute> =
-    TAttribute extends Attribute.Media<infer _TKind, infer TMultiple>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    TAttribute extends Attribute.Media<any, infer TMultiple>
         ? Utils.Expression.If<
               TMultiple,
               APIResponse<'plugin::upload.file'>[],
