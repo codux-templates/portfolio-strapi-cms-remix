@@ -30,7 +30,20 @@
   "resolve": {
     "alias": {
       "~/app/*": "./packages/client/app/*",
-      "~/*": "./packages/client/src/*"
+      "~/*": "./packages/client/src/*",
+      "node:fs": false,
+      "node:fs/promises": false,
+      "node:path": false,
+      "node:crypto": false,
+      "crypto": false,
+      "node:stream": false,
+      "stream": false,
+      "node:os": false,
+      "node:util": false,
+      "node:events": false,
+      "node:url": false,
+      "node:buffer": false,
+      "node:assert": false
     }
   },
   "svgLoader": "both",
