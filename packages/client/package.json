@@ -14,25 +14,25 @@
     "deploy:prod": "netlify deploy --build --prod"
   },
   "dependencies": {
-    "@floating-ui/core": "^1.6.6",
-    "@floating-ui/react-dom": "^2.1.1",
-    "@netlify/functions": "^2.8.1",
-    "@netlify/remix-adapter": "^2.4.0",
-    "@radix-ui/react-navigation-menu": "^1.2.0",
-    "@remix-run/node": "^2.10.3",
-    "@remix-run/react": "^2.10.3",
-    "@remix-run/serve": "^2.10.3",
+    "@floating-ui/core": "^1.6.8",
+    "@floating-ui/react-dom": "^2.1.2",
+    "@netlify/functions": "^2.8.2",
+    "@netlify/remix-adapter": "^2.5.1",
+    "@radix-ui/react-navigation-menu": "^1.2.1",
+    "@remix-run/node": "^2.12.1",
+    "@remix-run/react": "^2.12.1",
+    "@remix-run/serve": "^2.12.1",
     "classnames": "^2.5.1",
-    "framer-motion": "^11.2.14",
+    "framer-motion": "^11.11.1",
     "isbot": "^4.4.0",
-    "markdown-to-jsx": "^7.4.7",
+    "markdown-to-jsx": "^7.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.10.3",
-    "@wixc3/app-core": "^3.0.1",
+    "@remix-run/dev": "^2.12.1",
+    "@wixc3/app-core": "^4.3.2",
     "vite-tsconfig-paths": "^4.3.2"
   }
 }
