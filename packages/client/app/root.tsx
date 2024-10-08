@@ -7,11 +7,10 @@ import {
     isRouteErrorResponse,
     useRouteError,
 } from '@remix-run/react';
-import { useEffect } from 'react';
 import { APIContextProvider } from '~/api';
 import { getApi } from '~/api/data-api';
+import { ErrorComponent } from '~/components/error-component/error-component';
 import { SiteWrapper } from '~/components/site-wrapper/site-wrapper';
-import { ROUTES } from '~/router/config';
 import '~/styles/index.scss';
 import '~/styles/util-classes.scss';
 
@@ -54,18 +53,13 @@ export default function App() {
 
 export function ErrorBoundary() {
     const error = useRouteError();
+    const { title, message } = getErrorDetails(error);
 
-    const isRouteError = isRouteErrorResponse(error);
-
-    useEffect(() => {
-        const { title, message } = getErrorDetails(error);
-
-        // hack to handle https://github.com/remix-run/remix/issues/1136
-        window.location.href = ROUTES.error.to(title, message);
-    }, [isRouteError, error]);
-
-    // we are navigating to the error page in the effect above
-    return null;
+    return (
+        <SiteWrapper>
+            <ErrorComponent title={title} message={message} />
+        </SiteWrapper>
+    );
 }
 
 function getErrorDetails(error: unknown) {
