@@ -1,34 +1,44 @@
 import { createContext, useMemo } from 'react';
 import { StrapiConnection } from './strapi-connection';
 import { Connection } from './types';
-import { APIResponse, APIResponseCollection } from './strapi-types';
-import { ApiAboutAbout } from '@portfolio/strapi';
+import { ApiAboutAbout, ApiProjectItemProjectItem, ApiProjectProject } from '@portfolio/strapi';
 
 export function createApi(connection: Connection) {
     return {
-        getProject: (id: number) =>
-            connection.sendGetRequest<APIResponse<'api::project.project'>>([
+        getProject: async (id: number) => {
+            const response = await connection.sendGetRequest<{ data: ApiProjectProject }>([
                 'projects',
                 id.toString(),
-            ]),
-        getProjects: () =>
-            connection.sendGetRequest<APIResponseCollection<'api::project.project'>>(['projects'], {
-                populate: 'coverImage',
-                sort: 'orderIndex',
-            }),
-        getProjectItemsByProject: (projectId: number) =>
-            connection.sendGetRequest<APIResponseCollection<'api::project-item.project-item'>>(
+            ]);
+            return response.data;
+        },
+        getProjects: async () => {
+            const response = await connection.sendGetRequest<{ data: ApiProjectProject[] }>(
+                ['projects'],
+                {
+                    populate: 'coverImage',
+                    sort: 'orderIndex',
+                },
+            );
+            return response.data;
+        },
+        getProjectItemsByProject: async (projectId: number) => {
+            const response = await connection.sendGetRequest<{ data: ApiProjectItemProjectItem[] }>(
                 ['project-items'],
                 {
                     'filters[project]': projectId.toString(),
                     populate: 'image',
                     sort: 'orderIndex',
                 },
-            ),
-        getAbout: () =>
-            connection.sendGetRequest<{ data: ApiAboutAbout }>(['about'], {
+            );
+            return response.data;
+        },
+        getAbout: async () => {
+            const response = await connection.sendGetRequest<{ data: ApiAboutAbout }>(['about'], {
                 populate: 'image',
-            }),
+            });
+            return response.data;
+        },
     };
 }
 

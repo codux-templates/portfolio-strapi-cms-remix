@@ -1,27 +1,19 @@
-import type { APIResponseData, APIResponseCollectionMetadata } from './strapi-types';
+import { ApiAboutAbout, ApiProjectItemProjectItem, ApiProjectProject } from '@portfolio/strapi';
+import type { APIResponseCollectionMetadata } from './strapi-types';
 
 export type StrapiError = { status: number; name: string; message: string; details: unknown };
 
-export type StrapiProjectAttributes = {
-    coverImage: StrapiImage;
-};
-
-export type StrapiProject = APIResponseData<'api::project.project'> & {
-    attributes: StrapiProjectAttributes;
-};
-
-export type StrapiProjectItem = APIResponseData<'api::project-item.project-item'>;
-export type StrapiAbout = APIResponseData<'api::about.about'>;
-export type StrapiImage = {
-    url: string;
-};
+export type StrapiProject = ApiProjectProject;
+export type StrapiProjectItem = ApiProjectItemProjectItem;
+export type StrapiAbout = ApiAboutAbout;
+export type StrapiImage = StrapiProject['attributes']['coverImage'];
 
 export type CollectionMetaData = APIResponseCollectionMetadata;
 
 export type StrapiPath = 'projects' | 'project-items' | 'about';
 
-type StrapiProjectAttrKey = keyof StrapiProject['attributes'] | 'project';
-type StrapiProjectItemAttrKey = keyof StrapiProjectItem['attributes'] | 'project';
+type StrapiProjectAttrKey = keyof StrapiProject['attributes'];
+type StrapiProjectItemAttrKey = keyof StrapiProjectItem['attributes'];
 export type StrapiFilterParamKey = `filters[${StrapiProjectAttrKey | StrapiProjectItemAttrKey}]`;
 
 type StrapiParamKey = 'populate' | StrapiFilterParamKey | 'sort';

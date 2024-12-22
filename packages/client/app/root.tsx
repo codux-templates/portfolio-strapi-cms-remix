@@ -16,8 +16,8 @@ import '~/styles/util-classes.scss';
 
 export const loader = async () => {
     const api = getApi();
-    const { data: projects } = await api.getProjects();
-    const { data: about } = await api.getAbout();
+    const projects = await api.getProjects();
+    const about = await api.getAbout();
     return { projects, about };
 };
 

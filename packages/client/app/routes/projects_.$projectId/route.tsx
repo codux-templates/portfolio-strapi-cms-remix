@@ -24,12 +24,12 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
     const projectId = parseInt(projectIdParam);
 
     try {
-        const { data: project } = await api.getProject(projectId);
-        const { data: projectItems } = await api.getProjectItemsByProject(projectId);
+        const project = await api.getProject(projectId);
+        const projectItems = await api.getProjectItemsByProject(projectId);
 
         const canonicalUrl = getUrlOriginWithPath(request.url);
         return json({ project, projectItems, canonicalUrl });
-    } catch (e) {
+    } catch {
         throw json('Project not found', { status: 404 });
     }
 };
@@ -55,8 +55,8 @@ export default function ProjectPage() {
                     <h3 className={styles.title}>{project?.attributes.title}</h3>
                     <p className={styles.pageDescription}>{project?.attributes.description}</p>
                 </div>
-                {projectItems.map((item) => (
-                    <div key={item.id} className={styles.galleryItem}>
+                {projectItems.map((item, index) => (
+                    <div key={index} className={styles.galleryItem}>
                         <ProjectItem
                             title={item.attributes.title}
                             description={item.attributes.description}

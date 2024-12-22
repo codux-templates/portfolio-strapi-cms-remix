@@ -36,10 +36,10 @@ export const ProjectsGallery = ({ className, headerHeight }: ProjectsGalleryProp
     return (
         <div className={cx(styles.root, className)} ref={rootRef}>
             {projects?.map((project, index) => (
-                <Fragment key={project.id}>
+                <Fragment key={index}>
                     <Link
-                        to={ROUTES.project.to(project.id)}
-                        key={`link_${project.id}`}
+                        to={ROUTES.project.to(index)}
+                        key={`link_${index}`}
                         className={styles.box}
                         style={{
                             top: `calc(${index} * ${boxHeight} + ${_headerHeight})`,
@@ -52,7 +52,7 @@ export const ProjectsGallery = ({ className, headerHeight }: ProjectsGalleryProp
                         <span>show →</span>
                     </Link>
                     <img
-                        key={`img_${project.id}`}
+                        key={`img_${index}`}
                         alt={project.attributes.title}
                         src={getImageUrl(project.attributes.coverImage)}
                         style={{
