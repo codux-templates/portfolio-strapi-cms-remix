@@ -2,17 +2,26 @@ import type { APIResponseData, APIResponseCollectionMetadata } from './strapi-ty
 
 export type StrapiError = { status: number; name: string; message: string; details: unknown };
 
-export type StrapiProject = APIResponseData<'api::project.project'>;
+export type StrapiProjectAttributes = {
+    coverImage: StrapiImage;
+};
+
+export type StrapiProject = APIResponseData<'api::project.project'> & {
+    attributes: StrapiProjectAttributes;
+};
+
 export type StrapiProjectItem = APIResponseData<'api::project-item.project-item'>;
 export type StrapiAbout = APIResponseData<'api::about.about'>;
-export type StrapiImage = StrapiProject['attributes']['coverImage'];
+export type StrapiImage = {
+    url: string;
+};
 
 export type CollectionMetaData = APIResponseCollectionMetadata;
 
 export type StrapiPath = 'projects' | 'project-items' | 'about';
 
-type StrapiProjectAttrKey = keyof StrapiProject['attributes'];
-type StrapiProjectItemAttrKey = keyof StrapiProjectItem['attributes'];
+type StrapiProjectAttrKey = keyof StrapiProject['attributes'] | 'project';
+type StrapiProjectItemAttrKey = keyof StrapiProjectItem['attributes'] | 'project';
 export type StrapiFilterParamKey = `filters[${StrapiProjectAttrKey | StrapiProjectItemAttrKey}]`;
 
 type StrapiParamKey = 'populate' | StrapiFilterParamKey | 'sort';

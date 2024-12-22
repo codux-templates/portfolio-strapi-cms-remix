@@ -2,6 +2,7 @@ import { createContext, useMemo } from 'react';
 import { StrapiConnection } from './strapi-connection';
 import { Connection } from './types';
 import { APIResponse, APIResponseCollection } from './strapi-types';
+import { ApiAboutAbout } from '@portfolio/strapi';
 
 export function createApi(connection: Connection) {
     return {
@@ -25,7 +26,7 @@ export function createApi(connection: Connection) {
                 },
             ),
         getAbout: () =>
-            connection.sendGetRequest<APIResponse<'api::about.about'>>(['about'], {
+            connection.sendGetRequest<{ data: ApiAboutAbout }>(['about'], {
                 populate: 'image',
             }),
     };
