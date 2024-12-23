@@ -1,19 +1,18 @@
 import { createContext, useMemo } from 'react';
 import { StrapiConnection } from './strapi-connection';
-import { Connection } from './types';
-import { ApiAboutAbout, ApiProjectItemProjectItem, ApiProjectProject } from '@portfolio/strapi';
+import { Connection, StrapiAbout, StrapiProjectItem } from './types';
 
 export function createApi(connection: Connection) {
     return {
         getProject: async (id: number) => {
-            const response = await connection.sendGetRequest<{ data: ApiProjectProject }>([
+            const response = await connection.sendGetRequest<{ data: StrapiProjectItem }>([
                 'projects',
                 id.toString(),
             ]);
             return response.data;
         },
         getProjects: async () => {
-            const response = await connection.sendGetRequest<{ data: ApiProjectProject[] }>(
+            const response = await connection.sendGetRequest<{ data: StrapiProjectItem[] }>(
                 ['projects'],
                 {
                     populate: 'coverImage',
@@ -23,7 +22,7 @@ export function createApi(connection: Connection) {
             return response.data;
         },
         getProjectItemsByProject: async (projectId: number) => {
-            const response = await connection.sendGetRequest<{ data: ApiProjectItemProjectItem[] }>(
+            const response = await connection.sendGetRequest<{ data: StrapiProjectItem[] }>(
                 ['project-items'],
                 {
                     'filters[project]': projectId.toString(),
@@ -34,7 +33,7 @@ export function createApi(connection: Connection) {
             return response.data;
         },
         getAbout: async () => {
-            const response = await connection.sendGetRequest<{ data: ApiAboutAbout }>(['about'], {
+            const response = await connection.sendGetRequest<{ data: StrapiAbout }>(['about'], {
                 populate: 'image',
             });
             return response.data;

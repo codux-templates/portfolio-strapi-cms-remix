@@ -40,10 +40,10 @@ export const SiteMenu = ({ className, isOpen }: SiteMenuProps) => {
                             <div>Loading...</div>
                         ) : (
                             <RadixMenu.List className={styles.sub}>
-                                {projects?.map((project, index) => (
-                                    <RadixMenu.Item key={index}>
+                                {projects?.map((project) => (
+                                    <RadixMenu.Item key={project.id}>
                                         <MenuLink
-                                            to={ROUTES.project.to(index)}
+                                            to={ROUTES.project.to(project.id)}
                                             text={project.attributes.title}
                                         />
                                     </RadixMenu.Item>

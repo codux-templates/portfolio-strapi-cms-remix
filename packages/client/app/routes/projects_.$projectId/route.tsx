@@ -55,8 +55,8 @@ export default function ProjectPage() {
                     <h3 className={styles.title}>{project?.attributes.title}</h3>
                     <p className={styles.pageDescription}>{project?.attributes.description}</p>
                 </div>
-                {projectItems.map((item, index) => (
-                    <div key={index} className={styles.galleryItem}>
+                {projectItems.map((item) => (
+                    <div key={item.id} className={styles.galleryItem}>
                         <ProjectItem
                             title={item.attributes.title}
                             description={item.attributes.description}

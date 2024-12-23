@@ -4,10 +4,13 @@ import type { APIResponseCollectionMetadata } from './strapi-types';
 export type StrapiError = { status: number; name: string; message: string; details: unknown };
 
 export type StrapiProject = ApiProjectProject;
-export type StrapiProjectItem = ApiProjectItemProjectItem;
-export type StrapiAbout = ApiAboutAbout;
+export interface StrapiProjectItem extends ApiProjectItemProjectItem {
+    id: number;
+}
+export interface StrapiAbout extends ApiAboutAbout {
+    id: number;
+}
 export type StrapiImage = StrapiProject['attributes']['coverImage'];
-
 export type CollectionMetaData = APIResponseCollectionMetadata;
 
 export type StrapiPath = 'projects' | 'project-items' | 'about';
