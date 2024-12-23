@@ -35,14 +35,14 @@ export const ProjectsGallery = ({ className, headerHeight }: ProjectsGalleryProp
     const boxHeight = `min(calc((100vh - ${_headerHeight}) / ${projects?.length}), 4rem)`;
     return (
         <div className={cx(styles.root, className)} ref={rootRef}>
-            {projects?.map((project, index) => (
+            {projects?.map((project) => (
                 <Fragment key={project.id}>
                     <Link
                         to={ROUTES.project.to(project.id)}
                         key={`link_${project.id}`}
                         className={styles.box}
                         style={{
-                            top: `calc(${index} * ${boxHeight} + ${_headerHeight})`,
+                            top: `calc(${project.id} * ${boxHeight} + ${_headerHeight})`,
                             height: boxHeight,
                             position: 'sticky',
                             minHeight: '1.5rem',
@@ -56,7 +56,7 @@ export const ProjectsGallery = ({ className, headerHeight }: ProjectsGalleryProp
                         alt={project.attributes.title}
                         src={getImageUrl(project.attributes.coverImage)}
                         style={{
-                            top: `calc(${index + 1} * ${boxHeight} + ${_headerHeight})`,
+                            top: `calc(${project.id + 1} * ${boxHeight} + ${_headerHeight})`,
                             position: 'sticky',
                         }}
                     />

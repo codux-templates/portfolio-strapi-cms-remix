@@ -1,12 +1,16 @@
-import type { APIResponseData, APIResponseCollectionMetadata } from './strapi-types';
+import { ApiAboutAbout, ApiProjectItemProjectItem, ApiProjectProject } from '@portfolio/strapi';
+import type { APIResponseCollectionMetadata } from './strapi-types';
 
 export type StrapiError = { status: number; name: string; message: string; details: unknown };
 
-export type StrapiProject = APIResponseData<'api::project.project'>;
-export type StrapiProjectItem = APIResponseData<'api::project-item.project-item'>;
-export type StrapiAbout = APIResponseData<'api::about.about'>;
+export type StrapiProject = ApiProjectProject;
+export interface StrapiProjectItem extends ApiProjectItemProjectItem {
+    id: number;
+}
+export interface StrapiAbout extends ApiAboutAbout {
+    id: number;
+}
 export type StrapiImage = StrapiProject['attributes']['coverImage'];
-
 export type CollectionMetaData = APIResponseCollectionMetadata;
 
 export type StrapiPath = 'projects' | 'project-items' | 'about';

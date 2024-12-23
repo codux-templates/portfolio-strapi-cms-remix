@@ -13,19 +13,14 @@ function buildUrl(apiName: string, params?: Record<string, string>) {
  */
 export class StrapiConnection implements Connection {
     async sendGetRequest<T>(apiPath: string[], params?: { [key: string]: string }) {
-        try {
-            const res = await fetch(buildUrl(apiPath.join('/'), params), {
-                method: 'GET',
-            });
-            if (res.ok) {
-                const json = await res.text();
-                return JSON.parse(json) as T;
-            }
-            throw res.json();
-        } catch (e) {
-            console.log;
-            throw e;
+        const res = await fetch(buildUrl(apiPath.join('/'), params), {
+            method: 'GET',
+        });
+        if (res.ok) {
+            const json = await res.text();
+            return JSON.parse(json) as T;
         }
+        throw await res.json();
     }
 }
 
