@@ -35,14 +35,14 @@ export const ProjectsGallery = ({ className, headerHeight }: ProjectsGalleryProp
     const boxHeight = `min(calc((100vh - ${_headerHeight}) / ${projects?.length}), 4rem)`;
     return (
         <div className={cx(styles.root, className)} ref={rootRef}>
-            {projects?.map((project) => (
+            {projects?.map((project, index) => (
                 <Fragment key={project.id}>
                     <Link
                         to={ROUTES.project.to(project.id)}
                         key={`link_${project.id}`}
                         className={styles.box}
                         style={{
-                            top: `calc(${project.id} * ${boxHeight} + ${_headerHeight})`,
+                            top: `calc(${index} * ${boxHeight} + ${_headerHeight})`,
                             height: boxHeight,
                             position: 'sticky',
                             minHeight: '1.5rem',
